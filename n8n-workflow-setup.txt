@@ -1,0 +1,33 @@
+n8n Workflow Setup Instructions
+
+1. Create a new workflow in n8n
+2. Add the following nodes in order:
+
+   - Webhook Node (Trigger)
+   - Tavily Search Node (Research)
+   - Function Node (Process Results)
+   - OpenAI Node (Content Generation)
+   - OpenAI Node (Image Generation)
+   - LinkedIn Node (Publishing)
+
+3. Configure each node with the following settings:
+
+   Tavily Search:
+   - API Key: [Your Tavily API Key]
+   - Query: {{Webhook Input}}
+
+   OpenAI Content:
+   - Model: gpt-4
+   - Prompt: [Use the prompt from our JavaScript implementation]
+
+   OpenAI Image:
+   - Model: dall-e-3
+   - Prompt: [Use the image prompt from our JavaScript implementation]
+
+   LinkedIn:
+   - OAuth Credentials: [Your LinkedIn App Credentials]
+   - Post Content: {{OpenAI Content Output}}
+   - Media URL: {{OpenAI Image Output}}
+
+4. Connect the nodes in sequence
+5. Save and activate the workflow

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn AI Agent</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>LinkedIn AI Agent</h1>
+            <nav>
+                <button id="profileBtn">Profile</button>
+                <button id="connectionsBtn">Connections</button>
+                <button id="messagesBtn">Messages</button>
+                <button id="jobsBtn">Jobs</button>
+            </nav>
+        </header>
+        
+        <main>
+            <section id="profileSection" class="active">
+                <h2>Profile Analysis</h2>
+                <div class="profile-content">
+                    <div class="profile-info">
+                        <div class="profile-picture"></div>
+                        <div class="profile-details">
+                            <h3 id="profileName">Loading...</h3>
+                            <p id="profileHeadline"></p>
+                            <p id="profileLocation"></p>
+                        </div>
+                    </div>
+                    <div class="profile-analysis">
+                        <h3>AI Analysis</h3>
+                        <p id="profileSummary">Loading analysis...</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="connectionsSection">
+                <h2>Connection Recommendations</h2>
+                <div id="connectionsList"></div>
+            </section>
+
+            <section id="messagesSection">
+                <h2>Message Assistant</h2>
+                <div class="message-interface">
+                    <textarea id="messageInput" placeholder="Type your message..."></textarea>
+                    <button id="sendMessageBtn">Send Message</button>
+                </div>
+            </section>
+
+            <section id="jobsSection">
+                <h2>Job Recommendations</h2>
+                <div id="jobsList"></div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
