@@ -166,6 +166,61 @@ button:hover {
     margin-bottom: 30px;
 }
 
+.profile-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.profile-card button {
+    background-color: #0077b5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.profile-stats {
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
+
+.company-sharing {
+    margin-top: 20px;
+}
+
+.company-sharing select {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.company-sharing button {
+    width: 100%;
+    background-color: #0077b5;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.company-sharing button:hover {
+    background-color: #006097;
+}
+
+.profile-card button:hover {
+    background-color: #006097;
+}
+
 .stats-card {
     background-color: white;
     padding: 20px;

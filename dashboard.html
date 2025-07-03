@@ -15,6 +15,26 @@
         
         <main>
             <div class="dashboard-grid">
+                <div class="profile-card">
+                    <h3>LinkedIn Profile</h3>
+                    <div id="profileInfo">
+                        <button id="connectLinkedIn">Connect to LinkedIn</button>
+                        <div id="profileDetails" style="display: none;">
+                            <img id="profilePicture" src="" alt="Profile Picture" style="width: 100px; border-radius: 50%;">
+                            <h4 id="profileName"></h4>
+                            <p id="profileHeadline"></p>
+                            <div class="profile-stats">
+                                <p><strong>Connections:</strong> <span id="connectionCount">0</span></p>
+                                <p><strong>Last Post Engagement:</strong> <span id="postEngagement">N/A</span></p>
+                            </div>
+                            <div class="company-sharing">
+                                <h5>Share to Company Page</h5>
+                                <select id="companySelect"></select>
+                                <button id="shareToCompany">Share</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="stats-card">
                     <h3>Total Posts</h3>
                     <div class="stat-value" id="totalPosts">0</div>
