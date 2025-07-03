@@ -16,6 +16,9 @@ COPY . .
 # Build the application
 RUN npm run build
 
+
+RUN npm prune --production
+
 # Expose port
 EXPOSE 8080
 
