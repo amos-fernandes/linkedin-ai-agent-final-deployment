@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm install --production
 
 # Copy application files
 COPY . .
@@ -18,6 +18,10 @@ RUN npm run build
 
 # Expose port
 EXPOSE 8080
+
+# Set environment variables
+ENV NODE_ENV=production
+ENV PORT=8080
 
 # Start the application
 CMD ["npm", "start"]

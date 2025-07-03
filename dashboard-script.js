@@ -16,6 +16,13 @@ const schedulePostsBtn = document.getElementById('schedulePostsBtn');
 let generatedPosts = [];
 let scheduledContent = [];
 
+// LinkedIn Integration
+const connectLinkedInBtn = document.getElementById('connectLinkedIn');
+const profileDetails = document.getElementById('profileDetails');
+const profilePicture = document.getElementById('profilePicture');
+const profileName = document.getElementById('profileName');
+const profileHeadline = document.getElementById('profileHeadline');
+
 // Initialize Dashboard
 function initDashboard() {
     updateStats();
@@ -24,6 +31,63 @@ function initDashboard() {
     // Event Listeners
     generateDailyPostsBtn.addEventListener('click', handleGeneratePosts);
     schedulePostsBtn.addEventListener('click', handleSchedulePosts);
+    connectLinkedInBtn.addEventListener('click', connectLinkedIn);
+    
+    // Check if already connected
+    checkLinkedInConnection();
+}
+
+async function checkLinkedInConnection() {
+    try {
+        const response = await fetch('/api/profile');
+        if (response.ok) {
+            const profile = await response.json();
+            showProfile(profile);
+        }
+    } catch (error) {
+        console.error('Profile check error:', error);
+    }
+}
+
+function connectLinkedIn() {
+    window.location.href = '/auth/linkedin';
+}
+
+async function showProfile(profile) {
+    profileDetails.style.display = 'block';
+    connectLinkedInBtn.style.display = 'none';
+    profilePicture.src = profile.profilePicture?.displayImage || '';
+    profileName.textContent = `${profile.localizedFirstName} ${profile.localizedLastName}`;
+    profileHeadline.textContent = profile.headline || '';
+    
+    // Load connection count
+    const connectionCount = await linkedinService.getConnectionCount();
+    document.getElementById('connectionCount').textContent = connectionCount;
+    
+    // Load company pages
+    const companies = await linkedinService.getCompanyPages();
+    const companySelect = document.getElementById('companySelect');
+    companySelect.innerHTML = companies.map(company => 
+        `<option value="${company.id}">${company.name}</option>`
+    ).join('');
+    
+    // Set up company sharing
+    document.getElementById('shareToCompany').addEventListener('click', async () => {
+        const companyId = companySelect.value;
+        const postContent = getCurrentPostContent(); // Implement this function
+        const result = await linkedinService.shareToCompanyPage(companyId, postContent);
+        console.log('Post shared to company:', result);
+    });
+}
+
+async function updatePostAnalytics() {
+    try {
+        const analytics = await linkedinService.getPostAnalytics(lastPostId);
+        const engagement = analytics.engagement || 'N/A';
+        document.getElementById('postEngagement').textContent = engagement;
+    } catch (error) {
+        console.error('Failed to fetch post analytics:', error);
+    }
 }
 
 // Handle Post Generation
